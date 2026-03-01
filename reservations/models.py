@@ -15,7 +15,7 @@ model_db Brand
 
 
 class Brand(models.Model):
-    name = models.CharField(verbose_name="nazwa marki", max_length=32)
+    name = models.CharField(verbose_name="nazwa marki", max_length=32, unique=True)
 
     def __str__(self):
         return f"{self.name}"
