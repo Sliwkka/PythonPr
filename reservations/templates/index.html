@@ -1,0 +1,22 @@
+<form method="post" action="{% url 'car_list_view' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% if cars_from_context %}
+    <ul>
+        {% for car in cars_from_context %}
+        <li>
+            <a href="{% url 'car_detail_view' car.id %}"> {{ car.model.brand.name }} {{ car.model.name }} {{ car.price_per_day }} {{ car.model.segment }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No cars are available</p>
+{% endif %}
+
+
+
+<a href="{% url 'reservation_list_view' %}">TWOJE REZERWACJE</a>
+

@@ -1,0 +1,12 @@
+<a href="{% url 'car_list_view' %}">HOME</a>
+{% if reservations_from_context %}
+    <ul>
+        {% for reservation in reservations_from_context %}
+        <li>
+            <p>{{ reservation.car}} {{ reservation.start_date }} {{ reservation.end_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No reservations are available</p>
+{% endif %}

@@ -1,0 +1,22 @@
+<a href="{% url 'car_list_view' %}">HOME</a>
+<h1>{{ car.model.brand.name }} {{ car.model.name }}</h1>
+<p>Cena: {{ car.price_per_day }}</p>
+<p>Segment: {{ car.model.segment }} {{ car.model.get_segment_display }}</p>
+<p>Data produkcji: {{ car.production_date }}</p>
+<p>Opis modelu: {{ car.model.description }}</p>
+<p>Opis konkretnego egzamplarza: {{ car.description }}</p>
+
+
+
+<form action="{% url 'reserve' car.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>Reservation Form</h1></legend>
+    {% if error_message %}<p style="color:red"><strong>{{ error_message }}</strong></p>{% endif %}
+    <label for="start_date">start_date:</label>
+    <input type="date" id="start_date" name="start_date">
+    <label for="end_date">end_date:</label>
+    <input type="date" id="end_date" name="end_date">
+</fieldset>
+<input type="submit" value="Reserve">
+</form>
